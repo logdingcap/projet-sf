@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Formateur - SGVF</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>SGVF - Espace Formateur</h1>
+        <div id="user-info">
+            Connecté en tant que : Formateur
+            <button onclick="window.location.href='index.html'" class="btn-small">Déconnexion</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="formateur-section">
+            <h2>Saisie Assistée</h2>
+            
+            <div class="card">
+                <h3>Nouvelle Facture Mensuelle</h3>
+                <form id="invoice-form" onsubmit="submitInvoice(event)">
+                    <div class="form-group">
+                        <label for="matiere">Matière enseignée :</label>
+                        <select id="matiere" required>
+                            <option value="">-- Sélectionner une matière validée par l'admin --</option>
+                            <option value="Economie-Droit">Économie-Droit</option>
+                            <option value="Developpement Web">Développement Web</option>
+                            <option value="Communication">Communication</option>
+                        </select>
+                    </div>
+
+                    <div id="lignes-facture">
+                        <label style="font-weight: bold; display: block; margin-bottom: 10px;">Détail des cours :</label>
+                        <div class="ligne-cours form-group-row">
+                            <input type="date" class="date-cours" required>
+                            <input type="number" class="heures-cours" placeholder="Nb d'heures" min="1" required>
+                            <button type="button" class="btn-danger" onclick="supprimerLigne(this)">X</button>
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="btn-secondary" onclick="ajouterLigne()">+ Ajouter une ligne de cours</button>
+
+                    <div class="form-group" style="margin-top: 20px;">
+                        <label for="taux">Taux horaire (€) - Verrouillé par l'administration :</label>
+                        <input type="number" id="taux" value="45" disabled>
+                    </div>
+                    <button type="submit" class="btn-primary">Générer, Signer numériquement et Soumettre</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h3>Suivi de mes factures</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID / Période</th>
+                            <th>Matière</th>
+                            <th>Heures</th>
+                            <th>Montant</th>
+                            <th>Statut</th>
+                            <th>Contrôle NetYparéo</th>
+                            <th>Document</th>
+                            <th>Commentaire Admin</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-formateur">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Administration - SGVF</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>SGVF - Espace Administration</h1>
+        <div id="user-info">
+            Connecté en tant que : Admin UFA
+            <button onclick="window.location.href='index.html'" class="btn-small">Déconnexion</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="admin-section">
+            <h2>Contrôle et Validation</h2>
+            
+            <div class="card">
+                <h3>Factures en attente de traitement</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Formateur</th>
+                            <th>Matière</th>
+                            <th>Montant</th>
+                            <th>Statut Actuel</th>
+                            <th>Actions (Contrôle NetYparéo & Signature)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-admin">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
